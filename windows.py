@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         sub_window.setObjectName("SettingsWindow")
         sub_window.setWindowTitle("Настройка рабочего места")
 
-        ui_settings.buttonBox.accepted.connect(lambda: self.saveSettings(
+        ui_settings.buttonBox.accepted.connect(lambda: save_settings(
             ui_settings.spinBox.value(),
             ui_settings.comboBox.currentText(),
             ui_settings.lineEdit.text(),
@@ -49,4 +49,4 @@ class MainWindow(QMainWindow):
         self.ui.mdiArea.addSubWindow(sub_window)
         sub_window.show()
 
-    
+
