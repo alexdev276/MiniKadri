@@ -206,8 +206,8 @@ def insert_default(connection):
         cursor.executemany("""insert into day_statuses (code, name, color, is_working) values (?, ?, ?, ?)""",
                            def_statuses)
         cursor.executemany("""insert into languages (name) values (?)""", def_languages)
-        cursor.executemany("""insert into position_groups (nam) values (?)""", def_position_groups)
-        cursor.executemany("""insert into order_types (nam) values (?)""", def_order_types)
+        cursor.executemany("""insert into position_groups (name) values (?)""", def_position_groups)
+        cursor.executemany("""insert into order_types (name) values (?)""", def_order_types)
     connection.commit()
 
 
