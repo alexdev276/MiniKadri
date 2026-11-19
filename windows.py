@@ -25,7 +25,7 @@ def save_settings(hours: int, default_fill: str, company_name: str, head_full_na
 def get_settings():
     with get_connection() as connection:
         with connection.cursor() as cursor:
-            cursor.execute("""select settings_key, settings_value from settings order by id""")
+            cursor.execute("""select settings_key, settings_value from settings order""")
             return cursor.fetchall()
 
 
