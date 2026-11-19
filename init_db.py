@@ -8,7 +8,7 @@ def configure_db():
     [local]
     host = localhost
     """)
-    driver_config.register_database("minikadi", """
+    driver_config.register_database("minikadri", """
     [myapp]
     server = local
     protocol = inet
@@ -166,7 +166,7 @@ def schema(connection):
 def main():
     configure_db()
     with closing(create_database(
-            "myapp",
+            "minikadri",
             user="SYSDBA",
             password="masterkey",
             overwrite=False,
