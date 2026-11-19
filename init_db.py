@@ -205,6 +205,7 @@ def insert_default(connection):
         cursor.executemany("""insert into languages (nam) values (?)""", def_languages)
         cursor.executemany("""insert into position_groups (nam) values (?)""", def_position_groups)
         cursor.executemany("""insert into order_types (nam) values (?)""", def_order_types)
+    connection.commit()
 
 def main():
     try:
@@ -216,6 +217,7 @@ def main():
                 overwrite=False,
         )) as connection:
             schema(connection)
+        insert_default(connection)
     except types.DatabaseError:
         print("Database error")
 
