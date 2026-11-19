@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
 
         settings = get_settings()
         ui_settings.spinBox.setValue(int(settings[0][1]))
-        ui_settings.comboBox.setItemText(settings[1][1])
+        ui_settings.comboBox.setCurrentText(settings[1][1])
         ui_settings.lineEdit.setText(settings[2][1])
         ui_settings.lineEdit_2.setText(settings[3][1]),
         ui_settings.lineEdit_3.setText(settings[4][1]),
