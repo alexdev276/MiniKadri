@@ -222,6 +222,5 @@ def main():
         schema(connection)
         insert_default(connection)
 
-
 if __name__ == "__main__":
     main()

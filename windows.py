@@ -3,12 +3,31 @@ from PySide6 import QtWidgets
 from ui_mainwindow import Ui_MainWindow
 from ui_settings import Ui_SettingsWindow
 from PySide6.QtWidgets import QApplication, QMainWindow, QMdiArea, QMdiSubWindow, QWidget, QDialogButtonBox
-
+from firebird.driver import create_database, connect, driver_config, types
+from database import get_connection
 
 def save_settings(hours: int, default_fill: str, company_name: str, head_full_name: str, head_position: str,
                   interval_docs: int, interval_reps: int):
-    print("Saved seetings:}", hours, default_fill, company_name, head_full_name, head_position, interval_docs,
-          interval_reps, sep='\n')
+    settings = (
+        (hours, 'norma'),
+        (default_fill, 'status'),
+        (company_name, 'company name'),
+        (head_full_name, 'director fullname'),
+        (head_position, 'director job'),
+        (interval_docs, 'document interval'),
+        (interval_reps, 'order interval'),
+    )
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.executemany("""update settings set settings_value = ? where settings_key = ?""",
+                           settings)
+
+def get_settings():
+    with get_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute("""select settings_key, settings_value from settings order by id""")
+            return cursor.fetchall()
+
 
 
 class MainWindow(QMainWindow):
@@ -31,6 +50,16 @@ class MainWindow(QMainWindow):
         sub_window = QMdiSubWindow()
         sub_window.setObjectName("SettingsWindow")
         sub_window.setWindowTitle("Настройка рабочего места")
+
+        settings = get_settings()
+        ui_settings.spinBox.setValue(settings[0][1])
+        ui_settings.comboBox.setItemText(settings[1][1])
+        ui_settings.lineEdit.setText(settings[2][1])
+        ui_settings.lineEdit_2.setText(settings[3][1]),
+        ui_settings.lineEdit_3.setText(settings[4][1]),
+        ui_settings.lineEdit_4.setText(settings[5][1]),
+        ui_settings.lineEdit_5.setText(settings[6][1]),
+
 
         ui_settings.buttonBox.accepted.connect(lambda: save_settings(
             ui_settings.spinBox.value(),

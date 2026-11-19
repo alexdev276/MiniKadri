@@ -1,12 +1,25 @@
-from firebird.driver import connect
+import os
 
-con = connect(
-    '192.168.100.119/3050:/db/db.fdb',
-    user='SYSDBA',
-    password='masterkey',
-)
+from firebird.driver import connect, driver_config
 
-cur = con.cursor()
-cur.execute('select * from LANGUAGES')
-print(cur.fetchall())
-con.close()
+driver_config.register_server("local", """
+[local]
+host = localhost
+""")
+
+driver_config.register_database("minikadri", """
+[minikadri]
+server = local
+protocol = inet
+database = /db/minikadri.fdb
+charset = UTF8
+db_charset = UTF8
+""")
+
+
+def get_connection():
+    return connect(
+        "minikadri",
+        user="SYSDBA",
+        password="masterkey",
+    )
