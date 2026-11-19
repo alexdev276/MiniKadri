@@ -175,11 +175,11 @@ def insert_default(connection):
         ('order interval', '100')
     )
     def_statuses = (
-        ('empty', 'Пусто', '#FFFFFF', 'false'),
-        ('was', 'Был', '#98FF98', 'yes'),
-        ('vacation', 'В отпуске', 'FFFF55', 'false'),
-        ('ill', 'Болен', 'FF55A7', 'false'),
-        ('trip', 'В командировке', 'FF9CA2', 'yes')
+        ('empty', 'Пусто', '#FFFFFF', 0),
+        ('was', 'Был', '#98FF98', 1),
+        ('vacation', 'В отпуске', 'FFFF55', 0),
+        ('ill', 'Болен', 'FF55A7', 0),
+        ('trip', 'В командировке', 'FF9CA2', 1)
     )
     def_languages = (
         ("Английский"),
@@ -205,7 +205,7 @@ def insert_default(connection):
                            def_settings)
         cursor.executemany("""insert into day_statuses (code, name, color, is_working) values (?, ?, ?, ?)""",
                            def_statuses)
-        cursor.executemany("""insert into languages (nam) values (?)""", def_languages)
+        cursor.executemany("""insert into languages (name) values (?)""", def_languages)
         cursor.executemany("""insert into position_groups (nam) values (?)""", def_position_groups)
         cursor.executemany("""insert into order_types (nam) values (?)""", def_order_types)
     connection.commit()
