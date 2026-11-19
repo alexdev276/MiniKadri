@@ -207,7 +207,7 @@ def insert_default(connection):
                            def_statuses)
         cursor.executemany("""insert into languages (name) values (?)""", def_languages)
         cursor.executemany("""insert into position_groups (name) values (?)""", def_position_groups)
-        cursor.executemany("""insert into order_types (name) values (?)""", def_order_types)
+        cursor.executemany("""insert into order_types (code, name) values (?, ?)""", def_order_types)
     connection.commit()
 
 
