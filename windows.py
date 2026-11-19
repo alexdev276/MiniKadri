@@ -47,10 +47,6 @@ class MainWindow(QMainWindow):
         ui_settings = Ui_SettingsWindow()
         ui_settings.setupUi(settings_widget)
 
-        sub_window = QMdiSubWindow()
-        sub_window.setObjectName("SettingsWindow")
-        sub_window.setWindowTitle("Настройка рабочего места")
-
         settings = get_settings()
         ui_settings.spinBox.setValue(int(settings[0][1]))
         ui_settings.comboBox.setCurrentText(settings[1][1])
@@ -60,6 +56,12 @@ class MainWindow(QMainWindow):
         ui_settings.lineEdit_4.setText(settings[5][1]),
         ui_settings.lineEdit_5.setText(settings[6][1]),
         print("changed")
+
+        sub_window = QMdiSubWindow()
+        sub_window.setObjectName("SettingsWindow")
+        sub_window.setWindowTitle("Настройка рабочего места")
+
+
 
         ui_settings.buttonBox.accepted.connect(lambda: save_settings(
             ui_settings.spinBox.value(),
