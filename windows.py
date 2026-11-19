@@ -21,7 +21,7 @@ def save_settings(hours: int, default_fill: str, company_name: str, head_full_na
         with connection.cursor() as cursor:
             cursor.executemany("""update settings set settings_value = ? where settings_key = ?""",
                            settings)
-
+    print("saved")
 def get_settings():
     with get_connection() as connection:
         with connection.cursor() as cursor:
@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         ui_settings.lineEdit_3.setText(settings[4][1]),
         ui_settings.lineEdit_4.setText(settings[5][1]),
         ui_settings.lineEdit_5.setText(settings[6][1]),
-
+        print("changed")
 
         ui_settings.buttonBox.accepted.connect(lambda: save_settings(
             ui_settings.spinBox.value(),
