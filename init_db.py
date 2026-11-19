@@ -1,6 +1,6 @@
 import configparser
 
-from firebird.driver import create_database, connect, driver_config
+from firebird.driver import create_database, connect, driver_config, types
 from contextlib import closing
 
 def configure_db():
@@ -163,14 +163,16 @@ def schema(connection):
 
 def main():
     configure_db()
-    with closing(create_database(
-            "minikadri",
-            user="SYSDBA",
-            password="masterkey",
-            overwrite=False,
-    )) as connection:
-        schema(connection)
-
+    try:
+        with closing(create_database(
+                "minikadri",
+                user="SYSDBA",
+                password="masterkey",
+                overwrite=False,
+        )) as connection:
+            schema(connection)
+    except types.DatabaseError:
+        print("Database error")
 
 if __name__ == "__main__":
     main()
