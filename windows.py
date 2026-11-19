@@ -77,5 +77,6 @@ class MainWindow(QMainWindow):
         sub_window.setWidget(settings_widget)
         self.ui.mdiArea.addSubWindow(sub_window)
         sub_window.show()
+        print("started")
 
 
