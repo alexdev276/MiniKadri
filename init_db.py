@@ -9,7 +9,7 @@ def configure_db():
     host = localhost
     """)
     driver_config.register_database("minikadri", """
-    [myapp]
+    [minikadri]
     server = local
     protocol = inet
     database = /db/minikadri.fdb
