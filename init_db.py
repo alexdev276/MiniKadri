@@ -217,7 +217,7 @@ def main():
                 overwrite=False,
         )) as connection:
             schema(connection)
-        insert_default(connection)
+            insert_default(connection)
     except types.DatabaseError:
         print("Database error")
 
