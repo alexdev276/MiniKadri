@@ -161,6 +161,51 @@ def schema(connection):
             cursor.execute(s)
     connection.commit()
 
+def insert_default(connection):
+    def_settings = (
+        ('norma', '8'),
+        ('status', 'Был'),
+        ('company name', 'ООО Ласточка'),
+        ('director fullname', 'Иванов Иван Иванович'),
+        ('director job', 'Генеральный директор'),
+        ('document interval', '100'),
+        ('order interval', '100')
+    )
+    def_statuses = (
+        ('empty', 'Пусто', '#FFFFFF', 'false'),
+        ('was', 'Был', '#98FF98', 'yes'),
+        ('vacation', 'В отпуске', 'FFFF55', 'false'),
+        ('ill', 'Болен', 'FF55A7', 'false'),
+        ('trip', 'В командировке', 'FF9CA2', 'yes')
+    )
+    def_languages = (
+        ("Английский"),
+        ("Русский"),
+        ("Испанский"),
+        ("французский")
+    )
+    def_position_groups = (
+        ('Бухгалтерия'),
+        ('Директорат'),
+        ('IT отдел'),
+        ('Производствей цех'),
+        ('Разнорабочие')
+    )
+    def_order_types = (
+        ('hiring', 'Приказ о приеме на работу'),
+        ('dismissal', 'Приказ об увольнении'),
+        ('vacation', 'Приказ о предоставлении отпуска'),
+        ('trip', 'Приказ о направлении в командировку')
+    )
+    with connection.cursor() as cursor:
+        cursor.executemany("""insert into settings (settings_key, settings_value) values (?, ?)""",
+                       def_settings)
+        cursor.executemany("""insert into day_statuses (code, name, color, is_working) values (?, ?, ?, ?)""",
+                           def_statuses)
+        cursor.executemany("""insert into languages (nam) values (?)""", def_languages)
+        cursor.executemany("""insert into position_groups (nam) values (?)""", def_position_groups)
+        cursor.executemany("""insert into order_types (nam) values (?)""", def_order_types)
+
 def main():
     try:
         configure_db()
