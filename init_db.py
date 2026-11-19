@@ -162,8 +162,8 @@ def schema(connection):
     connection.commit()
 
 def main():
-    configure_db()
     try:
+        configure_db()
         with closing(create_database(
                 "minikadri",
                 user="SYSDBA",
