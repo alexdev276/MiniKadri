@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
         sub_window.setWindowTitle("Настройка рабочего места")
 
         settings = get_settings()
-        ui_settings.spinBox.setValue(settings[0][1])
+        ui_settings.spinBox.setValue(str(settings[0][1]))
         ui_settings.comboBox.setItemText(settings[1][1])
         ui_settings.lineEdit.setText(settings[2][1])
         ui_settings.lineEdit_2.setText(settings[3][1]),
