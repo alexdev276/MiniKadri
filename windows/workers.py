@@ -36,6 +36,7 @@ def open_workers(obj):
     table_model = QStandardItemModel(table)
     table_model.setHorizontalHeaderLabels(["Фамилия", "Имя", "Отчество", "Должность"])
     table.setModel(table_model)
+    table.setSortingEnabled(True)
 
     def show_department_workers(index):
         group_id = index.data(Qt.ItemDataRole.UserRole)
