@@ -23,9 +23,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
-        self.action = QAction(MainWindow)
-        self.action.setObjectName(u"action")
+        MainWindow.resize(1157, 689)
+        self.openWorkersWindow = QAction(MainWindow)
+        self.openWorkersWindow.setObjectName(u"openWorkersWindow")
         self.action_2 = QAction(MainWindow)
         self.action_2.setObjectName(u"action_2")
         self.action_3 = QAction(MainWindow)
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QMenuBar(MainWindow)
         self.menuBar.setObjectName(u"menuBar")
-        self.menuBar.setGeometry(QRect(0, 0, 800, 33))
+        self.menuBar.setGeometry(QRect(0, 0, 1157, 33))
         self.menu = QMenu(self.menuBar)
         self.menu.setObjectName(u"menu")
         self.menu_2 = QMenu(self.menuBar)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.menuBar.addAction(self.menu_2.menuAction())
         self.menuBar.addAction(self.menu_3.menuAction())
         self.menuBar.addAction(self.menu_4.menuAction())
-        self.menu.addAction(self.action)
+        self.menu.addAction(self.openWorkersWindow)
         self.menu.addAction(self.action_2)
         self.menu.addAction(self.action_3)
         self.menu_2.addAction(self.openSettingsWindow)
@@ -93,7 +93,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u041c\u0438\u043d\u0438\u043a\u0430\u0434\u0440\u044b", None))
-        self.action.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0438", None))
+        self.openWorkersWindow.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0438", None))
         self.action_2.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044c", None))
         self.action_3.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0438\u043a\u0430\u0437\u044b", None))
         self.openSettingsWindow.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0440\u0430\u0431\u043e\u0447\u0435\u0433\u043e \u043c\u0435\u0441\u0442\u0430", None))
