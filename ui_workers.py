@@ -29,53 +29,29 @@ class Ui_WorkersWindow(object):
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
-        self.pushButton = QPushButton(WorkersWindow)
-        self.pushButton.setObjectName(u"pushButton")
+        self.groups = QPushButton(WorkersWindow)
+        self.groups.setObjectName(u"groups")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.groups.sizePolicy().hasHeightForWidth())
+        self.groups.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.horizontalLayout.addWidget(self.groups)
 
-        self.pushButton_2 = QPushButton(WorkersWindow)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy)
-
-        self.horizontalLayout.addWidget(self.pushButton_2)
-
-        self.pushButton_3 = QPushButton(WorkersWindow)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
+        self.is_dismissed = QCheckBox(WorkersWindow)
+        self.is_dismissed.setObjectName(u"is_dismissed")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy1)
+        sizePolicy1.setHeightForWidth(self.is_dismissed.sizePolicy().hasHeightForWidth())
+        self.is_dismissed.setSizePolicy(sizePolicy1)
 
-        self.horizontalLayout.addWidget(self.pushButton_3)
-
-        self.checkBox = QCheckBox(WorkersWindow)
-        self.checkBox.setObjectName(u"checkBox")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
-        self.checkBox.setSizePolicy(sizePolicy2)
-
-        self.horizontalLayout.addWidget(self.checkBox)
+        self.horizontalLayout.addWidget(self.is_dismissed)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
-
-        self.pushButton_4 = QPushButton(WorkersWindow)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-        self.pushButton_4.setSizePolicy(sizePolicy)
-
-        self.horizontalLayout.addWidget(self.pushButton_4)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
@@ -138,11 +114,8 @@ class Ui_WorkersWindow(object):
 
     def retranslateUi(self, WorkersWindow):
         WorkersWindow.setWindowTitle(QCoreApplication.translate("WorkersWindow", u"Form", None))
-        self.pushButton.setText(QCoreApplication.translate("WorkersWindow", u"\u0413\u0440\u0443\u043f\u043f\u044b", None))
-        self.pushButton_2.setText(QCoreApplication.translate("WorkersWindow", u"+", None))
-        self.pushButton_3.setText(QCoreApplication.translate("WorkersWindow", u"-", None))
-        self.checkBox.setText(QCoreApplication.translate("WorkersWindow", u"\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0443\u0432\u043e\u043b\u0435\u043d\u043d\u044b\u0445", None))
-        self.pushButton_4.setText(QCoreApplication.translate("WorkersWindow", u"?", None))
+        self.groups.setText(QCoreApplication.translate("WorkersWindow", u"\u0413\u0440\u0443\u043f\u043f\u044b", None))
+        self.is_dismissed.setText(QCoreApplication.translate("WorkersWindow", u"\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0443\u0432\u043e\u043b\u0435\u043d\u043d\u044b\u0445", None))
         self.pushButton_6.setText(QCoreApplication.translate("WorkersWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.pushButton_5.setText(QCoreApplication.translate("WorkersWindow", u"\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
         self.pushButton_7.setText(QCoreApplication.translate("WorkersWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c", None))
