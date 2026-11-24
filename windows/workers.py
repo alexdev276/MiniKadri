@@ -78,7 +78,7 @@ def open_workers(obj):
         table_model.appendRow([QStandardItem(value or "") for value in worker])
 
     tree.clicked.connect(show_department_workers)
-    ui_workers.is_dismissed.connect(lambda :show_department_workers(tree.currentRow()))
+    ui_workers.is_dismissed.toggled.connect(lambda :show_department_workers(tree.currentRow()))
 
 
     sub_window = QMdiSubWindow()
