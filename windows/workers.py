@@ -16,7 +16,6 @@ def open_workers(obj):
 
     tree = ui_workers.treeView
     tree_model = QStandardItemModel(tree)
-    tree_model.setHorizontalHeaderLabels(["Группы и должности"])
     groups = {}
     with get_connection() as conn:
         with conn.cursor() as cursor:
