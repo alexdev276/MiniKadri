@@ -77,7 +77,7 @@ def open_workers(obj):
     show_all_workers()
 
     tree.clicked.connect(show_department_workers)
-    ui_workers.is_dismissed.toggled.connect(lambda :show_department_workers(tree.currentRow()))
+    ui_workers.is_dismissed.toggled.connect(lambda :show_department_workers(tree.currentIndex()))
     ui_workers.close.clicked.connect(sub_window.close)
     ui_workers.showAll.clicked.connect(show_all_workers)
 
