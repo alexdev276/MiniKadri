@@ -84,6 +84,7 @@ class Ui_WorkersWindow(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.treeView = QTreeView(WorkersWindow)
         self.treeView.setObjectName(u"treeView")
+        self.treeView.setMaximumSize(QSize(150, 16777215))
 
         self.horizontalLayout_3.addWidget(self.treeView)
 
