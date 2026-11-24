@@ -63,7 +63,7 @@ def open_settings(obj):
         ui_settings.lineEdit_5.text(),
     ))
     ui_settings.buttonBox.rejected.connect(sub_window.close)
-    close_btn = ui_settings.buttonBox.button(QDialogButtonBox.Close)
+    close_btn = ui_settings.buttonBox.button(QDialogButtonBox.close)
     close_btn.clicked.connect(sub_window.close)
 
     sub_window.setWidget(settings_widget)

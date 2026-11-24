@@ -9,7 +9,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.ui.openSettingsWindow.triggered.connect(open_settings(self))
+        self.ui.openSettingsWindow.triggered.connect(lambda :open_settings(self))
 
 
 
