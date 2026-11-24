@@ -62,9 +62,10 @@ def open_workers(obj):
                     select e.last_name, e.first_name, e.middle_name, p.name
                     from employees e
                     join positions p ON p.id = e.position_id
-                    order by e.last_name, e.first_name                """)
-    table_model.setRowCount(0)
+                    order by e.last_name, e.first_name
+                    """)
     workers = cursor.fetchall()
+    table_model.setRowCount(0)
     for worker in workers:
         table_model.appendRow([QStandardItem(value or "") for value in worker])
 
