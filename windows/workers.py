@@ -56,21 +56,18 @@ def open_workers(obj):
         for worker in workers:
             table_model.appendRow([QStandardItem(value or "") for value in worker])
 
-    def show_all_workers():
-        with get_connection() as conn:
-            with conn.cursor() as cursor:
-                cursor.execute("""
-                        select e.last_name, e.first_name, e.middle_name, p.name
-                        from employees e
-                        join positions p ON p.id = e.position_id
-                        order by e.last_name, e.first_name
-                """)
-        table_model.setRowCount(0)
-        workers = cursor.fetchall()
-        for worker in workers:
-            table_model.appendRow([QStandardItem(value or "") for value in worker])
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                    select e.last_name, e.first_name, e.middle_name, p.name
+                    from employees e
+                    join positions p ON p.id = e.position_id
+                    order by e.last_name, e.first_name                """)
+    table_model.setRowCount(0)
+    workers = cursor.fetchall()
+    for worker in workers:
+        table_model.appendRow([QStandardItem(value or "") for value in worker])
 
-    show_all_workers()
     tree.clicked.connect(show_department_workers)
 
 
