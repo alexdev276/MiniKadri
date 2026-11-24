@@ -64,7 +64,7 @@ def open_workers(obj):
                     join positions p ON p.id = e.position_id
                     order by e.last_name, e.first_name
                     """)
-    workers = cursor.fetchall()
+            workers = cursor.fetchall()
     table_model.setRowCount(0)
     for worker in workers:
         table_model.appendRow([QStandardItem(value or "") for value in worker])
