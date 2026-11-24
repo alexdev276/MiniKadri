@@ -1,8 +1,7 @@
-from pyexpat import model
-
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from ui_workers import Ui_WorkersWindow
-from PySide6.QtWidgets import QMdiSubWindow, QWidget, QDialogButtonBox
+from PySide6.QtWidgets import QMdiSubWindow, QWidget
+from PySide6.QtCore import Qt
 from database import get_connection
 
 def open_workers(obj):
@@ -23,13 +22,40 @@ def open_workers(obj):
             cursor.execute("select id, name from position_groups order by name")
             for g_id, name in cursor.fetchall():
                 group = QStandardItem(name)
+                group.setData(g_id, Qt.ItemDataRole.UserRole)
                 groups[g_id] = group
                 tree_model.appendRow(group)
             cursor.execute("select group_id, name from positions order by name")
             for g_id, name in cursor.fetchall():
-                groups[g_id].appendRow(QStandardItem(name))
+                position = QStandardItem(name)
+                position.setData(g_id, Qt.ItemDataRole.UserRole)
+                groups[g_id].appendRow(position)
     tree.setModel(tree_model)
 
+    table = ui_workers.tableView
+    table_model = QStandardItemModel(table)
+    table_model.setHorizontalHeaderLabels(["Фамилия", "Имя", "Отчество", "Должность"])
+    table.setModel(table_model)
+
+    def show_department_workers(index):
+        group_id = index.data(Qt.ItemDataRole.UserRole)
+
+        with get_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    SELECT e.last_name, e.first_name, e.middle_name, p.name
+                    FROM employees e
+                    JOIN positions p ON p.id = e.position_id
+                    WHERE p.group_id = ?
+                    ORDER BY e.last_name, e.first_name
+                """, (group_id,))
+                workers = cursor.fetchall()
+
+        table_model.setRowCount(0)
+        for worker in workers:
+            table_model.appendRow([QStandardItem(value or "") for value in worker])
+
+    tree.clicked.connect(show_department_workers)
 
 
 
