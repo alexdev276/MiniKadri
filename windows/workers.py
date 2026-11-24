@@ -40,6 +40,7 @@ def open_workers(obj):
 
     def show_department_workers(index):
         group_id = index.data(Qt.ItemDataRole.UserRole)
+        show_dismissed = ui_workers.is_dismissed.isChecked()
 
         with get_connection() as conn:
             with conn.cursor() as cursor:
@@ -48,8 +49,15 @@ def open_workers(obj):
                     from employees e
                     join positions p ON p.id = e.position_id
                     where p.group_id = ?
-                    order by e.last_name, e.first_name
-                """, (group_id,))
+                      and (? = 1 OR NOT exists (
+                          select 1
+                          from orders o
+                          join order_types t ON t.id = o.order_type_id
+                          where o.employee_id = e.id
+                            and t.code = 'dismissal'
+                            and o.date_from <= current_date
+                      ))
+                """, (group_id, int(show_dismissed)))
                 workers = cursor.fetchall()
 
         table_model.setRowCount(0)
@@ -70,7 +78,7 @@ def open_workers(obj):
         table_model.appendRow([QStandardItem(value or "") for value in worker])
 
     tree.clicked.connect(show_department_workers)
-
+    ui_workers.is_dismissed.connect(lambda :show_department_workers(tree.currentRow()))
 
 
     sub_window = QMdiSubWindow()
