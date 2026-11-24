@@ -68,6 +68,9 @@
    <addaction name="menu_4"/>
   </widget>
   <action name="openWorkersWindow">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Работники</string>
    </property>

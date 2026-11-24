@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(1157, 689)
         self.openWorkersWindow = QAction(MainWindow)
         self.openWorkersWindow.setObjectName(u"openWorkersWindow")
+        self.openWorkersWindow.setEnabled(True)
         self.action_2 = QAction(MainWindow)
         self.action_2.setObjectName(u"action_2")
         self.action_3 = QAction(MainWindow)
