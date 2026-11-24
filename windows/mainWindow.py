@@ -11,7 +11,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.ui.openSettingsWindow.triggered.connect(lambda :open_settings(self))
-        self.ui.openWorkersWindow.triggered.connect(lambda :open_workers(self))
+        self.ui.openWorkersWindow.triggered.connect(lambda :print("workers"))
 
 
 
