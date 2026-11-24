@@ -9,7 +9,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
+        print("inited")
         self.ui.openSettingsWindow.triggered.connect(lambda :open_settings(self))
         self.ui.openWorkersWindow.triggered.connect(lambda :print("workers"))
 
