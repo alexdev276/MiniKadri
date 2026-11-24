@@ -156,7 +156,10 @@ def schema(connection):
             created_at timestamp,
             constraint pk_employee_documents primary key (id),
             constraint fk_employee_documents foreign key (employee_id) references employees(id)
-        )"""
+        )""",
+        """alter table employees
+            add status varchar(10) default 'active' not null;
+        """
     )
     with connection.cursor() as cursor:
         for s in statements:

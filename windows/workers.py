@@ -53,14 +53,7 @@ def open_workers(obj):
                     from employees e
                     join positions p ON p.id = e.position_id
                     where p.group_id = ?
-                      and (? = 1 OR NOT exists (
-                          select 1
-                          from orders o
-                          join order_types t ON t.id = o.order_type_id
-                          where o.employee_id = e.id
-                            and t.code = 'dismissal'
-                            and o.date_from <= current_date
-                      ))
+                      and (? = 1 OR e.status = 'active')
                 """, (group_id, int(show_dismissed)))
                 workers = cursor.fetchall()
 
@@ -73,7 +66,7 @@ def open_workers(obj):
                 cursor.execute("""
                         select e.last_name, e.first_name, e.middle_name, p.name
                         from employees e
-                        join positions p ON p.id = e.position_id
+                        join positions p on p.id = e.position_id
                         order by e.last_name, e.first_name
                         """)
                 workers = cursor.fetchall()
