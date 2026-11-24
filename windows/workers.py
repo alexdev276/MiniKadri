@@ -3,9 +3,9 @@ from PySide6.QtWidgets import QMdiSubWindow, QWidget, QDialogButtonBox
 from database import get_connection
 
 def open_workers(obj):
-    if "WorkersWindow" in obj.ui.mdiArea.subWindowList():
+    """if "WorkersWindow" in obj.ui.mdiArea.subWindowList():
         obj.ui.mdiArea.setActiveSubWindow("WorkersWindow")
-        return
+        return"""
 
     workers_widget = QWidget()
     ui_workers = Ui_WorkersWindow()
