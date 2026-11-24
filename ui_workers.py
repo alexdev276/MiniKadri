@@ -16,14 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QHBoxLayout, QHeaderView,
-    QLayout, QListView, QPushButton, QSizePolicy,
-    QSpacerItem, QTableView, QVBoxLayout, QWidget)
+    QLayout, QPushButton, QSizePolicy, QSpacerItem,
+    QTableView, QTreeView, QVBoxLayout, QWidget)
 
 class Ui_WorkersWindow(object):
     def setupUi(self, WorkersWindow):
         if not WorkersWindow.objectName():
             WorkersWindow.setObjectName(u"WorkersWindow")
-        WorkersWindow.resize(651, 418)
+        WorkersWindow.resize(651, 521)
         self.verticalLayout_2 = QVBoxLayout(WorkersWindow)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
@@ -31,7 +31,7 @@ class Ui_WorkersWindow(object):
         self.horizontalLayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.pushButton = QPushButton(WorkersWindow)
         self.pushButton.setObjectName(u"pushButton")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
@@ -48,7 +48,7 @@ class Ui_WorkersWindow(object):
 
         self.pushButton_3 = QPushButton(WorkersWindow)
         self.pushButton_3.setObjectName(u"pushButton_3")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
@@ -58,8 +58,11 @@ class Ui_WorkersWindow(object):
 
         self.checkBox = QCheckBox(WorkersWindow)
         self.checkBox.setObjectName(u"checkBox")
-        sizePolicy.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
-        self.checkBox.setSizePolicy(sizePolicy)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout.addWidget(self.checkBox)
 
@@ -79,10 +82,10 @@ class Ui_WorkersWindow(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.listView = QListView(WorkersWindow)
-        self.listView.setObjectName(u"listView")
+        self.treeView = QTreeView(WorkersWindow)
+        self.treeView.setObjectName(u"treeView")
 
-        self.horizontalLayout_3.addWidget(self.listView)
+        self.horizontalLayout_3.addWidget(self.treeView)
 
         self.tableView = QTableView(WorkersWindow)
         self.tableView.setObjectName(u"tableView")
