@@ -33,6 +33,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="showAll">
+       <property name="text">
+        <string>Показать всех</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QCheckBox" name="is_dismissed">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -119,7 +126,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_9">
+        <widget class="QPushButton" name="close">
          <property name="text">
           <string>Выход</string>
          </property>

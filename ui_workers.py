@@ -39,6 +39,11 @@ class Ui_WorkersWindow(object):
 
         self.horizontalLayout.addWidget(self.groups)
 
+        self.showAll = QPushButton(WorkersWindow)
+        self.showAll.setObjectName(u"showAll")
+
+        self.horizontalLayout.addWidget(self.showAll)
+
         self.is_dismissed = QCheckBox(WorkersWindow)
         self.is_dismissed.setObjectName(u"is_dismissed")
         sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
@@ -95,10 +100,10 @@ class Ui_WorkersWindow(object):
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
-        self.pushButton_9 = QPushButton(WorkersWindow)
-        self.pushButton_9.setObjectName(u"pushButton_9")
+        self.close = QPushButton(WorkersWindow)
+        self.close.setObjectName(u"close")
 
-        self.verticalLayout_3.addWidget(self.pushButton_9)
+        self.verticalLayout_3.addWidget(self.close)
 
 
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
@@ -115,11 +120,12 @@ class Ui_WorkersWindow(object):
     def retranslateUi(self, WorkersWindow):
         WorkersWindow.setWindowTitle(QCoreApplication.translate("WorkersWindow", u"Form", None))
         self.groups.setText(QCoreApplication.translate("WorkersWindow", u"\u0413\u0440\u0443\u043f\u043f\u044b", None))
+        self.showAll.setText(QCoreApplication.translate("WorkersWindow", u"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0432\u0441\u0435\u0445", None))
         self.is_dismissed.setText(QCoreApplication.translate("WorkersWindow", u"\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0443\u0432\u043e\u043b\u0435\u043d\u043d\u044b\u0445", None))
         self.pushButton_6.setText(QCoreApplication.translate("WorkersWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.pushButton_5.setText(QCoreApplication.translate("WorkersWindow", u"\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
         self.pushButton_7.setText(QCoreApplication.translate("WorkersWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c", None))
         self.pushButton_8.setText(QCoreApplication.translate("WorkersWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
-        self.pushButton_9.setText(QCoreApplication.translate("WorkersWindow", u"\u0412\u044b\u0445\u043e\u0434", None))
+        self.close.setText(QCoreApplication.translate("WorkersWindow", u"\u0412\u044b\u0445\u043e\u0434", None))
     # retranslateUi
 

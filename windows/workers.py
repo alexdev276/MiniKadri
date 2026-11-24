@@ -13,6 +13,10 @@ def open_workers(obj):
     ui_workers = Ui_WorkersWindow()
     ui_workers.setupUi(workers_widget)
 
+    sub_window = QMdiSubWindow()
+    sub_window.setObjectName("WorkersWindow")
+    sub_window.setWindowTitle("Справочник работников")
+
     tree = ui_workers.treeView
     tree_model = QStandardItemModel(tree)
     tree_model.setHorizontalHeaderLabels(["Группы и должности"])
@@ -63,27 +67,28 @@ def open_workers(obj):
         table_model.setRowCount(0)
         for worker in workers:
             table_model.appendRow([QStandardItem(value or "") for value in worker])
+    def show_all_workers():
+        with get_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                        select e.last_name, e.first_name, e.middle_name, p.name
+                        from employees e
+                        join positions p ON p.id = e.position_id
+                        order by e.last_name, e.first_name
+                        """)
+                workers = cursor.fetchall()
+        table_model.setRowCount(0)
+        for worker in workers:
+            table_model.appendRow([QStandardItem(value or "") for value in worker])
 
-    with get_connection() as conn:
-        with conn.cursor() as cursor:
-            cursor.execute("""
-                    select e.last_name, e.first_name, e.middle_name, p.name
-                    from employees e
-                    join positions p ON p.id = e.position_id
-                    order by e.last_name, e.first_name
-                    """)
-            workers = cursor.fetchall()
-    table_model.setRowCount(0)
-    for worker in workers:
-        table_model.appendRow([QStandardItem(value or "") for value in worker])
+    show_all_workers()
 
     tree.clicked.connect(show_department_workers)
     ui_workers.is_dismissed.toggled.connect(lambda :show_department_workers(tree.currentRow()))
+    ui_workers.close.clicked.connect(sub_window.close)
+    ui_workers.showAll.clicked.connect(show_all_workers)
 
 
-    sub_window = QMdiSubWindow()
-    sub_window.setObjectName("WorkersWindow")
-    sub_window.setWindowTitle("Справочник работников")
 
     sub_window.setWidget(workers_widget)
     obj.ui.mdiArea.addSubWindow(sub_window)
